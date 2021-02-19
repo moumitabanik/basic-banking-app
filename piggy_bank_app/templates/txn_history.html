@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<body class="container" style="background-image: url('https://cdn.dribbble.com/users/3618930/screenshots/6596419/g3_2_4x.jpg');">
+
+<h2>
+    Welcome to Transaction History </h2>
+    <table id="txnTable" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Timestamp</th>
+          </tr>
+        </thead>
+        <!-- <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody> -->
+      </table>
+      <!-- <div id="div1"> 
+    </div> -->
+      <script>
+          var txnData = {{txnData|safe}};
+            for(var i=0;i<txnData.length;i++)
+            {
+                var tr="<tr>";
+                var td0="<td>"+(i+1)+"</td>";
+                var td1="<td>"+txnData[i]["from"]+"</td>";
+                var td2="<td>"+txnData[i]["to"]+"</td>";
+                var td3="<td>"+txnData[i]["amount"]+"</td>";
+                var td4="<td>"+txnData[i]["timestamp"]+"</td></tr>";
+
+                $("#txnTable").append(tr+td0+td1+td2+td3+td4); 
+
+            }   
+
+      </script>
+    </body>
+    {% endblock %}

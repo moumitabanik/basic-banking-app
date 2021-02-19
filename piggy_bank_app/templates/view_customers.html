@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<body class="container" style="background-image: url('https://c.files.bbci.co.uk/12A9B/production/_111434467_gettyimages-1143489763.jpg');">
+
+<h1>View All Customers!</h1>
+
+<table id = "usersTable" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">CIF</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    
+  </table>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">User Details</h4>
+        </div>
+        <div class="modal-body">
+          <label id="username">Name:</label>
+          <label id="email">Email:</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+    var userData = {{userData|safe}};
+      for(var i=0;i<userData.length;i++)
+      {
+          var tr="<tr>";
+          var td0="<td>"+(i+1)+"</td>";
+          var td1="<td>"+userData[i]["name"]+"</td>";
+          var td2="<td>"+userData[i]["cif"]+"</td> ";
+          var td3="<td data-toggle='modal' data-target='#myModal'>"+"Details"+"</td></tr>";
+          $("#usersTable").append(tr+td0+td1+td2+td3); 
+
+      }   
+      $("#usersTable tr").click(function() {
+        $('#username').attr('value', '');  
+        $('#email').attr('value', '');  
+        var rowId = $(this).children("td").html();
+        $('#username').html("Name:"+userData[rowId-1]["name"]);  
+        $("#email").html("Email ID: "+userData[rowId-1]["email"]); 
+      });
+
+</script>
+</body>
+
+{% endblock %}

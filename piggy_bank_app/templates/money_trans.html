@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block page_content %}
+<body class="col-12" style="background-image: url('https://www.africalegalnetwork.com/nigeria/wp-content/uploads/sites/19/2017/08/Banking.jpg');">
+<form id="txnForm">
+  <!-- <div class="row"> -->
+    <div class= "text-center text-white">     <h1>𝐓𝐡𝐞 𝐏𝐢𝐠𝐠𝐲 𝐁𝐚𝐧𝐤 𝐎𝐟 𝐈𝐧𝐝𝐢𝐚</h1> </div>
+    <div class="form-floating MB text-right" >
+      <a type="submit" class="btn btn-primary" href="{% url 'Landing' %}" >HOME</a>
+    </div>
+    <div class="row">
+    <div class="form-floating mb-3 col p-5 mb-2 bg-gradient-dark btn-lg  text-white">
+      <label for="fromUser">𝐅𝐑𝐎𝐌</label>
+      <select class="form-select form-control" id="fromUser">
+        <option selected>Select Customer</option>
+      </select>      
+    </div>
+    <div class="form-floating mb-3 col p-5 mb-2 bg-gradient-dark btn-lg text-white">
+      <label for="toUser">𝐓𝐎</label>
+      <select class="form-select form-control" id="toUser">
+        <option selected>Select Customer</option>
+      </select>      
+    </div>
+    <div class="form-floating col p-5 mb-3 bg-gradient-dark btn-lg text-white">
+      <label for="toUser">𝐀𝐌𝐎𝐔𝐍𝐓</label>
+    <input type="text" class="form-control" placeholder="Please enter the amount" id="amount">
+    </div>
+  <!-- </div> -->
+  <div class="form-floating col-12 text-center">
+    <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+  </div>
+</div>
+  </form>
+
+  <!-- Modal -->
+  <div class="modal fade" id="txnSuccessModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">        
+        <div class="modal-body">
+          <p>Transaction completed successfully</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+  <script>
+    $(document).ready(function () {
+    var fromUserData = {{fromUserData|safe}};
+    var sel = document.getElementById('fromUser');
+    for(var i = 0; i < fromUserData.length; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = fromUserData[i]['name'];
+        opt.value = fromUserData[i]['cif'];
+        sel.appendChild(opt);
+
+    }
+    var toUserData = {{toUserData|safe}};
+    sel = document.getElementById('toUser');
+    for(var i = 0; i < toUserData.length; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = toUserData[i]['name'];
+        opt.value = toUserData[i]['cif'];
+        sel.appendChild(opt);        
+    }
+    $("#txnForm").submit(function(evt){
+        evt.preventDefault();
+        var from = document.getElementById('fromUser').value;
+        var to = document.getElementById('toUser').value;
+        var amount = document.getElementById('amount').value;
+        var reqJson = {
+          from:from,
+          to:to,
+          amount:amount  
+        }
+      $.ajax({url: "http://127.0.0.1:8000/submitTxn", type: "POST",dataType: 'json',
+            contentType: 'application/json', data : JSON.stringify(reqJson), async: false, success: function(result){
+            $('#txnSuccessModal').modal('show'); 
+            var sel = document.getElementById("fromUser");
+            var fromUserText= sel.options[sel.selectedIndex].text;
+            sel = document.getElementById("toUser");
+            var toUserText = sel.options[sel.selectedIndex].text;
+            var url = "{% url 'Transaction Successful'  %}?from="+fromUserText+"&to=+"+toUserText+"&amount="+reqJson.amount;
+            $('#txnSuccessModal').on('hidden.bs.modal', function () {
+              document.location.href = url;
+            })
+            
+      },error: function (jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+        //alert(msg);
+    },
+  });
+      console.log(reqJson)
+    });
+      //var form_valid = (document.getElementById('some_input').value == 'google');
+        // if(!form_valid){
+        //     alert('Given data is incorrect');
+        //     return false;
+        // }
+
+    });
+  </script>
+</body>
+  {% endblock %}

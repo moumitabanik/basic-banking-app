@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<body class="container" style="background-image: url('https://www.passionateinmarketing.com/wp-content/uploads/2020/09/ET-2-2018_Artikkeli-07-16x9.jpg');">
+
+  <div style="text-align: left" class="text-warning ">
+    <h1>𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝑷𝒊𝒈𝒈𝒚 𝑩𝒂𝒏𝒌 𝒐𝒇 𝑰𝒏𝒅𝒊𝒂</h1>
+    <div class="font-italic">
+    <h3>Powered By GRIP Association</h3>
+    <h4>A different approach to Banking</h4> 
+    <h5>One Tap Transfer Money to Any Account</h5>
+    </div>
+  </div>
+  
+  <div>
+    <img src="https://assets.dryicons.com/uploads/icon/svg/6284/f355f54a-f9e3-414f-8abf-3707eb601e29.svg" class="rounded float-right" alt="Bank Logo" style="width:40%">
+  </div>
+
+  <div class="text-left">
+    <div class="form-floating MB" >
+      <a type="submit" class="btn btn-secondary" href="{% url 'Funds Transfer' %}" >MONEY TRANSFER</a>
+      <a type="submit" class="btn btn-secondary" href="{% url 'View Customers' %}" >ALL CUSTOMER</a>
+      <a type="submit" class="btn btn-secondary" href="{% url 'Transaction History' %}" >TRANSACTION HISTORY</a>
+  </div>
+
+
+
+</body>
+
+{% endblock %}

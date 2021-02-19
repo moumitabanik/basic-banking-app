@@ -1,16 +1,20 @@
 {% extends "base.html" %}
-
+<!-- {% load static %}   -->
+<!-- <link rel="stylesheet" href="css/viewCustomers.css"> -->
 {% block page_content %}
-<body class="container" style="background-image: url('https://c.files.bbci.co.uk/12A9B/production/_111434467_gettyimages-1143489763.jpg');">
+<!-- <link rel="stylesheet" href="{% static '/css/viewCustomers.css' %}"></link> -->
+<body class="container" style="background-image: url('https://www.bbva.com/wp-content/uploads/2020/04/cabecera_donacion-1920x1180.png');">
+<div class="text-center p-3 mb-2 bg- text-white">
+<h1>PIGGY BANK OF INDIA</h1>
+</div>
+<h2> All Customer Details</h2>
 
-<h1>View All Customers!</h1>
-
-<table id = "usersTable" class="table">
+<table id = "usersTable" class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Serial No.</th>
         <th scope="col">Name</th>
-        <th scope="col">CIF</th>
+        <th scope="col">CIF No.</th>
         <th scope="col">Details</th>
       </tr>
     </thead>
@@ -23,12 +27,13 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">User Details</h4>
         </div>
         <div class="modal-body">
           <label id="username">Name:</label>
           <label id="email">Email:</label>
+          <label id="balance">Account Balance:</label>
+          <label id="cif">Customer Information File Number:</label>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -37,7 +42,7 @@
       
     </div>
   </div>
-
+  
   <script>
     var userData = {{userData|safe}};
       for(var i=0;i<userData.length;i++)
@@ -46,16 +51,20 @@
           var td0="<td>"+(i+1)+"</td>";
           var td1="<td>"+userData[i]["name"]+"</td>";
           var td2="<td>"+userData[i]["cif"]+"</td> ";
-          var td3="<td data-toggle='modal' data-target='#myModal'>"+"Details"+"</td></tr>";
+          var td3="<td data-toggle='modal' data-target='#myModal'><a href=#>"+"Details"+"</a></td></tr>";
           $("#usersTable").append(tr+td0+td1+td2+td3); 
 
       }   
       $("#usersTable tr").click(function() {
         $('#username').attr('value', '');  
         $('#email').attr('value', '');  
+        $('#balance').attr('value', '');  
+        $('#cif').attr('value', '');  
         var rowId = $(this).children("td").html();
         $('#username').html("Name:"+userData[rowId-1]["name"]);  
         $("#email").html("Email ID: "+userData[rowId-1]["email"]); 
+        $("#balance").html("Account Balance: "+userData[rowId-1]["balance"]); 
+        $("#cif").html("Customer Information File Number: "+userData[rowId-1]["cif"]); 
       });
 
 </script>

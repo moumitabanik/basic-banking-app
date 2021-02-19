@@ -80,7 +80,7 @@
           to:to,
           amount:amount  
         }
-      $.ajax({url: "http://127.0.0.1:8000/submitTxn", type: "POST",dataType: 'json',
+      $.ajax({url: "http://127.0.0.1:8000/piggybank/submitTxn", type: "POST",dataType: 'json',
             contentType: 'application/json', data : JSON.stringify(reqJson), async: false, success: function(result){
             $('#txnSuccessModal').modal('show'); 
             var sel = document.getElementById("fromUser");

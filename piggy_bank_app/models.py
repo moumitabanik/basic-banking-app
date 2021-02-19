@@ -1,5 +1,6 @@
 from djongo import models
 from django import forms
+from datetime import datetime 
 
 class UserData(models.Model):
     _id = models.ObjectIdField()
@@ -26,5 +27,5 @@ class Transactions(models.Model):
     fromCif = models.TextField()
     toCif = models.TextField()
     amount = models.TextField()
-    timestamp = models.DateTimeField(auto_now=True)
+    timestamp = models.DateTimeField(default=datetime.now)
     objects = models.DjongoManager()

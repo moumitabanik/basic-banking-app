@@ -3,28 +3,39 @@
 {% block page_content %}
 <body class="container" style="background-image: url('https://www.passionateinmarketing.com/wp-content/uploads/2020/09/ET-2-2018_Artikkeli-07-16x9.jpg');">
 
-  <div style="text-align: left" class="text-warning ">
-    <h1>𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝑷𝒊𝒈𝒈𝒚 𝑩𝒂𝒏𝒌 𝒐𝒇 𝑰𝒏𝒅𝒊𝒂</h1>
-    <div class="font-italic">
-    <h3>Powered By GRIP Association</h3>
+<div class="row h-100">
+  <div style="text-align: center" class="text-white col-12 align-self-center" >
+    <div style="background-color:#610f2e">
+    <h1 class="display-4" >𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 </h1>
+    <h1 class="display-4">𝑷𝒊𝒈𝒈𝒚 𝑩𝒂𝒏𝒌 𝒐𝒇 𝑰𝒏𝒅𝒊𝒂</h1>
+    </div>
+    <div style="background-color:#696263a6">
+    <h3 >Powered By GRIP Association</h3>
     <h4>A different approach to Banking</h4> 
     <h5>One Tap Transfer Money to Any Account</h5>
     </div>
+
+    <div>
+      <img src="https://library.kissclipart.com/20180913/che/kissclipart-bank-transfer-icon-png-clipart-investment-banking-28bda51bee106964.png" class="rounded-top float-center mb-3" alt="Bank Logo" style="width:25%">
+    </div>
+    <div style="text-align: center">
+      <div class="form-floating MB" >
+        <a type="submit" class="btn btn-secondary btn-lg" style="background-color:#0d2369" href="{% url 'Funds Transfer' %}" >TRANSFER MONEY </a>
+        <a type="submit" class="btn btn-secondary btn-lg" style="background-color:#0d2369" href="{% url 'View Customers' %}" > VIEW ALL CUSTOMERS</a>
+        <a type="submit" class="btn btn-secondary btn-lg" style="background-color:#0d2369" href="{% url 'Transaction History' %}" >TRANSACTION HISTORY</a>
+        <a type="submit" class="btn btn-secondary btn-lg" style="background-color:#0d2369" href="{% url 'aboutus' %}" >ABOUT US</a>
+    </div>
   </div>
-  
-  <div>
-    <img src="https://assets.dryicons.com/uploads/icon/svg/6284/f355f54a-f9e3-414f-8abf-3707eb601e29.svg" class="rounded float-right" alt="Bank Logo" style="width:40%">
-  </div>
-
-  <div class="text-left">
-    <div class="form-floating MB" >
-      <a type="submit" class="btn btn-secondary" href="{% url 'Funds Transfer' %}" >MONEY TRANSFER</a>
-      <a type="submit" class="btn btn-secondary" href="{% url 'View Customers' %}" >ALL CUSTOMER</a>
-      <a type="submit" class="btn btn-secondary" href="{% url 'Transaction History' %}" >TRANSACTION HISTORY</a>
-  </div>
-
-
-
 </body>
+<footer>
+<div class="text-center p-2" style="background-color: rgba(112, 108, 108, 0.685)">
+  © 2020 Copyright:
+  <a class="text-dark"  href="http://127.0.0.1:8000/piggybank/">thepiggybankofindia</a> 
+</div>
+<div class="text-center" style="background-color: rgba(112, 108, 108, 0.685)">
+  Designed & Developed by Moumita Banik
+  </div>
+<!-- Copyright -->
+</footer>
 
 {% endblock %}

@@ -4,6 +4,7 @@ from piggy_bank_app import views
 urlpatterns = [
     path('viewCustomers', views.view_all_customers, name='View Customers'),
     path('', views.landing, name='Landing'),
+    path('aboutus', views.aboutus, name='aboutus'),
     path('txHistory', views.txn_history, name='Transaction History'),
     path('transfer', views.money_trans, name='Funds Transfer'),
     path('customer_details', views.customer_details, name='Customer Details'),

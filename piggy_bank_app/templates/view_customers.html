@@ -3,19 +3,31 @@
 <!-- <link rel="stylesheet" href="css/viewCustomers.css"> -->
 {% block page_content %}
 <!-- <link rel="stylesheet" href="{% static '/css/viewCustomers.css' %}"></link> -->
-<body class="container" style="background-image: url('https://www.bbva.com/wp-content/uploads/2020/04/cabecera_donacion-1920x1180.png');">
-<div class="text-center p-3 mb-2 bg- text-white">
-<h1>PIGGY BANK OF INDIA</h1>
-</div>
-<h2> All Customer Details</h2>
+<body class="container" style="background-image: url('https://blog.newrelic.com/wp-content/uploads/mobile-banking-background-min.jpg');">
+  <div>
+    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/34023/bank-clerk-job-clipart-xl.png" class="rounded float-left" alt="Bank Logo" style="width:25%">
+  </div>
 
-<table id = "usersTable" class="table table-bordered">
+<div class="text-center p-3 mb-2 bg- text-white">
+<h1 class="display-4">𝐏𝐈𝐆𝐆𝐘 𝐁𝐀𝐍𝐊 𝐎𝐅 𝐈𝐍𝐃𝐈𝐀</h1>
+</div>
+<div class="text-center text-white">
+<h1><ins> 𝘼𝙡𝙡 𝘾𝙪𝙨𝙩𝙤𝙢𝙚𝙧 𝙑𝙞𝙚𝙬𝙨</h1>
+</div></ins>
+<div class="text-center text-white">
+  <h3> 𝘊𝘭𝘪𝘤𝘬 𝘰𝘯 𝘵𝘩𝘦 𝘥𝘦𝘵𝘢𝘪𝘭𝘴 𝘧𝘰𝘳 𝘮𝘰𝘳𝘦</h3>
+  </div>
+<div class="form-floating MB text-right" >
+  <a type="submit" class="btn btn-secondary" href="{% url 'Landing' %}" >HOME</a>
+</div>
+
+<table id = "usersTable" class="table table-dark table-bordered text-black">
     <thead>
       <tr>
         <th scope="col">Serial No.</th>
         <th scope="col">Name</th>
         <th scope="col">CIF No.</th>
-        <th scope="col">Details</th>
+        <th scope="col">More Info</th>
       </tr>
     </thead>
     
@@ -29,11 +41,14 @@
         <div class="modal-header">
           <h4 class="modal-title">User Details</h4>
         </div>
-        <div class="modal-body">
-          <label id="username">Name:</label>
-          <label id="email">Email:</label>
-          <label id="balance">Account Balance:</label>
-          <label id="cif">Customer Information File Number:</label>
+        <div class="modal-body" style="background-color:#d68a67">
+          <label id="username" class="font-weight-bold">Name:</label>
+          <label id="email" class="font-weight-bold">Email:</label>
+          <label id="balance" class="font-weight-bold">Account Balance:</label>
+          <label id="cif" class="font-weight-bold">Customer Information File Number:</label>
+          <div class="col-12">
+            <img src="http://www.iconhot.com/icon/png/vista-style-business-and-data/256/users-17.png" class="rounded float-right" alt="...">
+          </div> 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

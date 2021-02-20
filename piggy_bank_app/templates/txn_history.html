@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 {% block page_content %}
 
-<body class="container" style="background-image: url('https://cdn.dribbble.com/users/3618930/screenshots/6596419/g3_2_4x.jpg');">
+<body class="container" style="background-image: url('https://www.visa.co.nz/dam/VCOM/global/partner-with-us/images/apple-pay-new-1600x900.jpg');">
+  <h2 class="text-center mb-4 display-4 text-black" style="background-color:#f0b9a4c4"> 
+    𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐓𝐫𝐚𝐧𝐬𝐚𝐜𝐭𝐢𝐨𝐧 𝐇𝐢𝐬𝐭𝐨𝐫𝐲</h2>
+    <div style="text-align: right">
+      <div class="form-floating MB" >
+        <a type="submit" class="btn btn-secondary btn-lg" style="background-color:#0d2369" href="{% url 'Landing' %}" >HOME</a>
+    </div>
+<div class="table-active table-bordered text-black" style="background-color:#d0d8f3">
 
-<h2>
-    Welcome to Transaction History </h2>
     <table id="txnTable" class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Serial No.</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
             <th scope="col">Amount</th>
             <th scope="col">Timestamp</th>
           </tr>
@@ -54,5 +59,6 @@
             }   
 
       </script>
+      </div>
     </body>
     {% endblock %}

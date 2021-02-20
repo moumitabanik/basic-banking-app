@@ -8,6 +8,9 @@ import json
 def landing(request):
     return render(request, 'landing.html', {})
 
+def aboutus(request):
+    return render(request, 'aboutus.html', {})
+
 def view_all_customers(request):
     userDataViewObjArr =  []
     try:
